@@ -18,6 +18,18 @@
                 <li><a href="#">Sobre</a></li>
                 <li><a href="#">Saiba Mais</a></li>
             </ul>
+        <div class="last-items">
+            <div class="switchMode">
+                    <img src="{{ asset('imagens/white-mode.svg') }}" alt="WhiteMode">
+                    <img src="{{ asset('imagens/dark-mode.svg') }}" alt="DarkMode">
+            </div>
+                <button class="btn-login">
+                    <a href="#">
+                        <img src="{{ asset('imagens/user-icon.svg') }}" alt="user-icon">
+                        Login
+                    </a>
+                </button>
+        </div>
         </nav>
     </header>
     <main>
