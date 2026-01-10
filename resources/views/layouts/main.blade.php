@@ -36,7 +36,7 @@
 
             </div>
                 <button class="btn-login">
-                    <a href="#">
+                    <a href="{{ url('/dashboard') }}">
                         <img src="{{ asset('imagens/user-icon.svg') }}" alt="user-icon">
                         Login
                     </a>

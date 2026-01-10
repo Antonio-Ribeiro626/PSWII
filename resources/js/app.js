@@ -1,7 +1,7 @@
-import "./bootstrap";
+import './bootstrap';
 
-let darkMode = document.getElementById("dark");
+import Alpine from 'alpinejs';
 
-darkMode.addEventListener("click", () => {
-    document.body.classList.add(".darkMode");
-});
+window.Alpine = Alpine;
+
+Alpine.start();
