@@ -14,6 +14,7 @@ html{
 
 header{
     background-color:#252525 ;
+    box-shadow: rgba(0, 0, 0, 0.26) 1px 1px 8px;
 }
 
 
@@ -28,6 +29,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+   
 }
 
 ul li{
@@ -91,6 +93,7 @@ a {
     margin-block: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.26) 1px 1px 8px;
     text-align: center;
+    cursor: pointer;
 }
 
 .card img{
@@ -104,13 +107,114 @@ a {
 
 .Cartaz{
     margin-block: 2rem;
-    object-fit: cover;
+    align-items: center;
 }
 
 .Cartaz img{
-    height: fit-content;
+
     width: 100%;
 }
+
+
+.Cartaz h2{
+
+    top: 350px;
+    right: 450px;
+
+}
+
+.Cartaz p {
+    top: 400px;
+    right: 450px;
+    width: 50%;
+}
+
+
+.bg-image{
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+     width: 100%; 
+     object-fit: cover; 
+     background-repeat: no-repeat;
+     border-image: fill 1 linear-gradient(hsl(0 0 0 /.5), hsl(0 0 0 /.8));
+      color: white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: start;
+    justify-content: end;
+}
+
+.bg-image p {
+    opacity: 50%;
+}
+
+
+/*  ----   btn op */
+
+.btn-op{
+    padding: .5rem .8rem;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+
+.darkMode{
+    transition: all .300ms ease-in-out;
+    background: #252525;
+    color: white;
+}
+
+#dark.dark{
+    background-color: white;
+    border-radius: 5rem;
+}
+
+#dark{
+    padding: .5rem;
+}
+
+
+
+#dark path{
+    fill: white;
+}
+
+#dark.darkPath path{
+    fill: #252525;
+}
+
+#white{
+    background-color: white;
+    padding: .5rem;
+    border-radius: 5rem;
+}
+
+#white.add path{
+    fill: white;
+}
+
+.white{
+   background: white;
+   color: #252525;
+}
+   
+
+#white.remove{
+    background-color: transparent;
+
+} 
+
+
+
+
+
+
 
 
 

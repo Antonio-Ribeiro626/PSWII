@@ -53,7 +53,10 @@ Movie::updateOrCreate(
      */
     public function show(string $id)
     {
-        //
+
+    $movie = Movie::findOrFail($id);
+    return view('movies.detail', compact('movie'));
+
     }
 
     /**
@@ -129,12 +132,6 @@ Movie::updateOrCreate(
                 }
             }
         }
-
-        // Proteger os  campos opcionais
-        // $movie['poster_path'] = $movie['poster_path'] ?? '';
-        // $movie['overview'] = $movie['overview'] ?? '';
-        // $movie['release_date'] = $movie['release_date'] ?? '';
-        // $movie['vote_average'] = $movie['vote_average'] ?? 0;
 
         return $movie;
     });
