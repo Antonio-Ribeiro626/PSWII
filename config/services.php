@@ -18,6 +18,11 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
+    'tmdb' =>[
+        'key' => env('TMDB_API_KEY'),
+        'url' => env('TMDB_BASE_URL'),
+    ],
+
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
