@@ -16,4 +16,8 @@ class Movie extends Model
         'release_date',
         'rating',
     ];
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
