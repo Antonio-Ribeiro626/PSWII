@@ -1,10 +1,21 @@
 @extends('layouts.main')
 
-
 @section('content')
+<div class="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-2xl p-10">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">
+        Bem-vindo ao MovieC
+    </h1>
 
-<h1>Este site é destinado aos users que gostam de partilhar as suas opiniões com os outros.</h1>
+    <p class="text-gray-700 text-lg mb-4">
+        Este site é destinado aos users que gostam de partilhar as suas opiniões com os outros.
+    </p>
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non minima libero vero! Inventore eligendi sapiente cum vel, atque nisi beatae molestiae temporibus, ducimus accusamus laborum, ullam hic reprehenderit deleniti harum assumenda ea amet at sed illum. Quidem optio nisi, fuga fugiat eius pariatur perspiciatis deserunt similique aliquam, eligendi possimus laborum.</p>
-
+    <p class="text-gray-600 leading-relaxed">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non minima libero vero! 
+        Inventore eligendi sapiente cum vel, atque nisi beatae molestiae temporibus, 
+        ducimus accusamus laborum, ullam hic reprehenderit deleniti harum assumenda ea 
+        amet at sed illum. Quidem optio nisi, fuga fugiat eius pariatur perspiciatis 
+        deserunt similique aliquam, eligendi possimus laborum.
+    </p>
+</div>
 @endsection

@@ -15,6 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <x-nav-link href="/admin" :active="request()->routeIs('admin')">
+                                Área Admin
+                            </x-nav-link>
+                        @endif
+                    @endauth
+                        <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
+                            Voltar para o site
+                        </x-nav-link>
                 </div>
             </div>
 

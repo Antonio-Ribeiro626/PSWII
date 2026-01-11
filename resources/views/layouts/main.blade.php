@@ -1,53 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bem Vindo ao MovieC</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-
+    
+    <style>
+        /* Reset para evitar conflitos */
+        .navbar-custom * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
-<body>
-    <header class="">
-        <nav class="nav-bar container">
-            <div class="logo">
-                <a href="/"><img src="{{ asset('imagens/Logo.svg') }}" alt=""></a>
-            </div>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="{{ url('/about') }}">Sobre</a></li>
-                <li><a href="{{ url('/saiba-mais') }}">Saiba Mais</a></li>
-            </ul>
-        <div class="last-items">
-            <div class="switchMode">
-                    <svg width="30" height="30" viewBox="0 0 14 14" fill="#fff" id="white" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.1 7C2.1 6.81435 2.02625 6.6363 1.89497 6.50503C1.7637 6.37375 1.58565 6.3 1.4 6.3H0.7C0.514348 6.3 0.336301 6.37375 0.205025 6.50503C0.0737498 6.6363 0 6.81435 0 7C0 7.18565 0.0737498 7.3637 0.205025 7.49497C0.336301 7.62625 0.514348 7.7 0.7 7.7H1.4C1.58565 7.7 1.7637 7.62625 1.89497 7.49497C2.02625 7.3637 2.1 7.18565 2.1 7ZM2.548 10.5L2.051 10.997C1.92062 11.1282 1.84745 11.3056 1.84745 11.4905C1.84745 11.6754 1.92062 11.8528 2.051 11.984C2.18215 12.1144 2.35957 12.1876 2.5445 12.1876C2.72943 12.1876 2.90685 12.1144 3.038 11.984L3.535 11.487C3.64968 11.3531 3.7096 11.1808 3.7028 11.0047C3.69599 10.8285 3.62296 10.6614 3.49829 10.5367C3.37363 10.412 3.20651 10.339 3.03034 10.3322C2.85416 10.3254 2.68191 10.3853 2.548 10.5ZM7 2.1C7.18565 2.1 7.3637 2.02625 7.49497 1.89497C7.62625 1.7637 7.7 1.58565 7.7 1.4V0.7C7.7 0.514348 7.62625 0.336301 7.49497 0.205025C7.3637 0.0737498 7.18565 0 7 0C6.81435 0 6.6363 0.0737498 6.50503 0.205025C6.37375 0.336301 6.3 0.514348 6.3 0.7V1.4C6.3 1.58565 6.37375 1.7637 6.50503 1.89497C6.6363 2.02625 6.81435 2.1 7 2.1ZM10.962 3.738C11.1456 3.73723 11.3216 3.66432 11.452 3.535L11.949 3.038C12.0223 2.97525 12.0818 2.89802 12.1238 2.81118C12.1658 2.72433 12.1894 2.62974 12.1932 2.53334C12.1969 2.43693 12.1806 2.3408 12.1454 2.25097C12.1103 2.16115 12.0569 2.07956 11.9887 2.01134C11.9204 1.94313 11.8389 1.88975 11.749 1.85455C11.6592 1.81936 11.5631 1.80312 11.4667 1.80684C11.3703 1.81056 11.2757 1.83418 11.1888 1.87619C11.102 1.91821 11.0248 1.97772 10.962 2.051L10.5 2.548C10.3696 2.67915 10.2964 2.85657 10.2964 3.0415C10.2964 3.22643 10.3696 3.40385 10.5 3.535C10.6234 3.65775 10.7881 3.73013 10.962 3.738ZM2.562 3.535C2.69238 3.66432 2.86836 3.73723 3.052 3.738C3.14412 3.73853 3.23545 3.72088 3.32073 3.68604C3.40602 3.6512 3.48359 3.59988 3.549 3.535C3.67938 3.40385 3.75255 3.22643 3.75255 3.0415C3.75255 2.85657 3.67938 2.67915 3.549 2.548L3.052 2.051C2.98719 1.98527 2.91007 1.93296 2.82505 1.89703C2.74002 1.86111 2.64875 1.84229 2.55645 1.84164C2.46415 1.84099 2.37262 1.85852 2.2871 1.89324C2.20157 1.92797 2.12373 1.97919 2.058 2.044C1.99227 2.10881 1.93995 2.18593 1.90403 2.27095C1.86811 2.35598 1.84929 2.44725 1.84864 2.53955C1.84732 2.72596 1.92012 2.90526 2.051 3.038L2.562 3.535ZM13.3 6.3H12.6C12.4143 6.3 12.2363 6.37375 12.105 6.50503C11.9737 6.6363 11.9 6.81435 11.9 7C11.9 7.18565 11.9737 7.3637 12.105 7.49497C12.2363 7.62625 12.4143 7.7 12.6 7.7H13.3C13.4857 7.7 13.6637 7.62625 13.795 7.49497C13.9263 7.3637 14 7.18565 14 7C14 6.81435 13.9263 6.6363 13.795 6.50503C13.6637 6.37375 13.4857 6.3 13.3 6.3ZM11.452 10.5C11.319 10.426 11.1655 10.3974 11.0148 10.4185C10.8641 10.4395 10.7244 10.5092 10.6168 10.6168C10.5092 10.7244 10.4395 10.8641 10.4185 11.0148C10.3974 11.1655 10.426 11.319 10.5 11.452L10.997 11.949C11.1282 12.0794 11.3056 12.1526 11.4905 12.1526C11.6754 12.1526 11.8528 12.0794 11.984 11.949C12.1144 11.8178 12.1876 11.6404 12.1876 11.4555C12.1876 11.2706 12.1144 11.0932 11.984 10.962L11.452 10.5ZM7 3.15C6.23854 3.15 5.49418 3.3758 4.86105 3.79884C4.22793 4.22189 3.73446 4.82317 3.44306 5.52667C3.15167 6.23016 3.07542 7.00427 3.22398 7.7511C3.37253 8.49792 3.73921 9.18393 4.27764 9.72236C4.81607 10.2608 5.50208 10.6275 6.2489 10.776C6.99573 10.9246 7.76984 10.8483 8.47333 10.5569C9.17683 10.2655 9.77811 9.77207 10.2012 9.13895C10.6242 8.50582 10.85 7.76146 10.85 7C10.8481 5.97949 10.4419 5.0013 9.72032 4.27968C8.9987 3.55807 8.02051 3.15185 7 3.15ZM7 9.45C6.51544 9.45 6.04175 9.30631 5.63885 9.0371C5.23595 8.76789 4.92193 8.38525 4.7365 7.93757C4.55106 7.48989 4.50254 6.99728 4.59708 6.52203C4.69161 6.04677 4.92495 5.61023 5.26759 5.26759C5.61023 4.92495 6.04677 4.69161 6.52203 4.59708C6.99728 4.50254 7.48989 4.55106 7.93757 4.7365C8.38525 4.92193 8.76789 5.23595 9.0371 5.63885C9.30631 6.04175 9.45 6.51544 9.45 7C9.45 7.64978 9.19188 8.27295 8.73241 8.73241C8.27295 9.19188 7.64978 9.45 7 9.45ZM7 11.9C6.81435 11.9 6.6363 11.9737 6.50503 12.105C6.37375 12.2363 6.3 12.4143 6.3 12.6V13.3C6.3 13.4857 6.37375 13.6637 6.50503 13.795C6.6363 13.9263 6.81435 14 7 14C7.18565 14 7.3637 13.9263 7.49497 13.795C7.62625 13.6637 7.7 13.4857 7.7 13.3V12.6C7.7 12.4143 7.62625 12.2363 7.49497 12.105C7.3637 11.9737 7.18565 11.9 7 11.9Z" fill="#252525"/>
-</svg>
-
-                    <svg width="30" height="30" viewBox="0 0 16 16" id="dark" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.6857 8.80395C15.5703 8.70581 15.4305 8.64298 15.2821 8.62261C15.1337 8.60225 14.9827 8.62518 14.8464 8.68879C14.001 9.08683 13.082 9.29169 12.1523 9.28928C10.4327 9.28714 8.78359 8.58551 7.56462 7.33737C6.34565 6.08923 5.65567 4.39581 5.64512 2.62634C5.64876 2.07178 5.71584 1.51959 5.84497 0.98117C5.87237 0.83766 5.86209 0.689229 5.8152 0.551167C5.7683 0.413105 5.68648 0.290405 5.57816 0.195709C5.46984 0.101013 5.33895 0.037745 5.19896 0.0124232C5.05898 -0.0128987 4.91496 0.000641388 4.78175 0.0516484C3.52853 0.631496 2.43913 1.52964 1.61588 2.6617C0.792639 3.79376 0.262575 5.12258 0.0754883 6.52332C-0.111599 7.92407 0.050432 9.35077 0.546359 10.6694C1.04229 11.988 1.85583 13.1552 2.91057 14.0615C3.9653 14.9677 5.22661 15.5832 6.57599 15.8501C7.92537 16.1169 9.31854 16.0265 10.6246 15.5872C11.9307 15.1479 13.1068 14.3741 14.0425 13.3387C14.9781 12.3032 15.6426 11.04 15.9735 9.66767C16.0138 9.51055 16.008 9.34467 15.9568 9.19095C15.9056 9.03724 15.8113 8.90257 15.6857 8.80395ZM8.09132 14.307C6.74971 14.2973 5.44383 13.8611 4.35246 13.0581C3.2611 12.2552 2.43761 11.1247 1.99475 9.8216C1.55188 8.51844 1.5113 7.10629 1.87856 5.77849C2.24581 4.45069 3.00294 3.27215 4.04629 2.40424V2.62634C4.04841 4.83785 4.90311 6.95815 6.42283 8.52192C7.94255 10.0857 10.0031 10.9652 12.1523 10.9674C12.7166 10.9695 13.2795 10.9088 13.8311 10.7864C13.2794 11.8603 12.4533 12.7588 11.4418 13.385C10.4303 14.0113 9.2718 14.3415 8.09132 14.3399V14.307Z" />
-</svg>
-
-                    
-
-
-            </div>
-                <button class="btn-login">
-                    <a href="{{ url('/dashboard') }}">
-                        <img src="{{ asset('imagens/user-icon.svg') }}" alt="user-icon">
-                        Login
+<body class="bg-white transition-colors duration-300">
+    <header class="navbar-custom bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-2xl sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <img src="{{ asset('imagens/Logo.svg') }}" alt="MovieC Logo" class="h-10 w-auto">
                     </a>
-                </button>
-        </div>
+                </div>
+
+                <!-- Menu Central -->
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="/" class="px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
+                        Início
+                    </a>
+                    <a href="{{ route('movies.search') }}" class="flex items-center gap-2 px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        Buscar
+                    </a>
+                    <a href="{{ url('/about') }}" class="px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
+                        Sobre
+                    </a>
+                    <a href="{{ url('/saiba-mais') }}" class="px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
+                        Saiba Mais
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    
+                    <button id="theme-toggle" class="p-2.5 rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                        <svg id="theme-toggle-light-icon" class="w-6 h-6 text-white hidden group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                        </svg>
+                        <svg id="theme-toggle-dark-icon" class="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                        </svg>
+                    </button>
+
+                    @auth
+                        <!-- User Dropdown -->
+                        <div class="relative hidden sm:block">
+                            <button 
+                                onclick="document.getElementById('user-dropdown').classList.toggle('hidden')"
+                                class="flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 text-white font-bold px-6 py-2.5 rounded-xl border-2 border-gray-600 hover:border-gray-500 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group"
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                                {{ Auth::user()->name }}
+                                <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+
+                            <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-2 z-50">
+                                <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+                                    <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ Auth::user()->name }}</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 truncate">{{ Auth::user()->email }}</p>
+                                </div>
+                                <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-4 py-2.5 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Dashboard</a>
+                                <a href="{{ route('profile.edit') }}" class="flex items-center gap-3 px-4 py-2.5 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Perfil</a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="w-full flex items-center gap-3 px-4 py-2.5 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">Sair</button>
+                                </form>
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 text-white font-bold px-6 py-2.5 rounded-xl border-2 border-gray-600 hover:border-gray-500 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+                            <svg class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            Login
+                        </a>
+                            <a href="{{ route('register') }}" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 text-white font-bold px-6 py-2.5 rounded-xl border-2 border-gray-600 hover:border-gray-500 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+                            <svg class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            Register
+                        </a>
+                    @endauth
+                </div>
+            </div>
+
+
         </nav>
     </header>
-    <main>
-        <div class="container">
+    
+
+    <main class="min-h-screen transition-colors duration-300">
+        <div class="container mx-auto dark:text-gray-100">
             @yield('content')
         </div>
     </main>
+
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+    <footer class="bg-gray-900 text-gray-200 dark:text-gray-400 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Sobre -->
+        <div>
+            <h3 class="text-white text-lg font-bold mb-4">MovieC</h3>
+            <p class="text-gray-400 text-sm">O melhor lugar para descobrir filmes incríveis e manter-se atualizado com novidades do cinema. Conecte-se e explore nosso catálogo!</p>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h3 class="text-white text-lg font-bold mb-4">Links Úteis</h3>
+            <ul class="space-y-2">
+                <li><a href="/" class="hover:text-white transition-colors">Início</a></li>
+                <li><a href="{{ url('/movies') }}" class="hover:text-white transition-colors">Filmes</a></li>
+                <li><a href="{{ route('movies.search') }}" class="hover:text-white transition-colors">Buscar Filmes</a></li>
+                <li><a href="{{ url('/about') }}" class="hover:text-white transition-colors">Sobre</a></li>
+                <li><a href="{{ url('/saiba-mais') }}" class="hover:text-white transition-colors">Saiba Mais</a></li>
+            </ul>
+        </div>
+
+        <!-- Contato -->
+        <div>
+            <h3 class="text-white text-lg font-bold mb-4">Contato</h3>
+            <ul class="space-y-2 text-sm">
+                <li>Email: <a href="mailto:contato@moviec.com" class="hover:text-white transition-colors">contato@moviec.com</a></li>
+                <li>Telefone: <a href="tel:+351912345678" class="hover:text-white transition-colors">+351 912 345 678</a></li>
+                <li>Redes sociais:
+                    <div class="flex gap-3 mt-1">
+                        <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.34-1.5.56-2.3.66a4.15 4.15 0 001.84-2.3 8.19 8.19 0 01-2.6.98 4.12 4.12 0 00-7.03 3.75 11.7 11.7 0 01-8.5-4.3 4.12 4.12 0 001.27 5.5 4.06 4.06 0 01-1.86-.5v.05a4.12 4.12 0 003.3 4 4.1 4.1 0 01-1.85.07 4.12 4.12 0 003.85 2.85 8.24 8.24 0 01-5.1 1.77A8.28 8.28 0 012 19.54a11.64 11.64 0 006.29 1.84c7.55 0 11.68-6.27 11.68-11.71v-.53a8.18 8.18 0 002-2.08z"/></svg></a>
+                        <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c5.42 0 9.8 4.38 9.8 9.8s-4.38 9.8-9.8 9.8S2.2 17.42 2.2 12 6.58 2.2 12 2.2zm0 1.6a8.2 8.2 0 100 16.4 8.2 8.2 0 000-16.4zm0 2a4.2 4.2 0 110 8.4 4.2 4.2 0 010-8.4zm0 1.6a2.6 2.6 0 100 5.2 2.6 2.6 0 000-5.2z"/></svg></a>
+                        <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.52 0-10 4.48-10 10 0 4.42 2.86 8.15 6.84 9.5v-6.7h-2.06v-2.8h2.06V9.68c0-2.04 1.22-3.18 3.08-3.18.9 0 1.84.16 1.84.16v2.02h-1.04c-1.02 0-1.34.63-1.34 1.28v1.54h2.28l-.36 2.8h-1.92v6.7c3.98-1.35 6.84-5.08 6.84-9.5 0-5.52-4.48-10-10-10z"/></svg></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="border-t border-gray-700 mt-8 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+        &copy; {{ date('Y') }} MovieC. Todos os direitos reservados.
+    </div>
+</footer>
 </body>
 </html>
