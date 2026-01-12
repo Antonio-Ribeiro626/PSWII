@@ -51,6 +51,17 @@ a {
 }
 
 
+.head{
+    color:#252525;
+    font-weight: 800;
+    font-size: 3rem;
+}
+
+.search-p{
+    color:#252525;
+    margin-bottom: 2rem;
+}
+
 /* --------- Switch --------- */
 
 .switchMode{
@@ -210,6 +221,36 @@ a {
 
 } 
 
+
+.movies-bd{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+     box-shadow: rgba(0, 0, 0, 0.16) 1px 1px 8px;
+     padding: 1rem;
+     border-radius: .4rem;
+}
+
+.elements-crud{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+.cards-2{
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr);
+    gap: 1rem;
+}
+
+.btn-db{
+    background-color: #252525;
+    color: white;
+    padding: .4rem .8rem;
+    border-radius: .5rem;
+}
 
 
 

@@ -89,7 +89,7 @@ class MovieController extends Controller
 
         $movie->delete();
 
-        return redirect('/movies')->with('success', 'Filme apagado com sucesso');
+        return redirect('dashboard')->with('success', 'Filme apagado com sucesso');
     }
 
     public function search(Request $request)

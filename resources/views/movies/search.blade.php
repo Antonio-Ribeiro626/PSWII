@@ -2,19 +2,17 @@
 
 @section('content')
 
-<div class="bg-gray-200 dark:bg-gray-800 -mx-4 px-4 py-8 mb-8">
-    <div class="max-w-7xl mx-auto">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Buscar Filmes
+<div class="container">
+        <h1 class="head">
+            Procurar por  Filmes
         </h1>
-        <p class="text-gray-800 dark:text-gray-200 text-base">
-            Encontre e adicione filmes à sua coleção
+        <p class="search-p">
+            Encontre e adicione filmes a base de dados
         </p>
-    </div>
 </div>
 
 <div class="max-w-7xl mx-auto px-4 mb-12">
-    <form method="GET" action="{{ route('movies.search') }}">
+    <form method="GET" action="{{ route('admin.movies.search') }}">
         <div class="flex gap-3">
             <input 
                 type="text" 

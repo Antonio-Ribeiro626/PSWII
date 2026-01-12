@@ -1,14 +1,17 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AdminDashboardController;
+
 
 
 // Home / Filmes
 Route::get('/', [MovieController::class, 'index']);
-Route::get('movies/search', [MovieController::class, 'search'])->name('movies.search');
+
 Route::resource('movies', MovieController::class);
 
 // Páginas estáticas
@@ -23,9 +26,7 @@ Route::post('/movies/{movie}/comments', [CommentController::class, 'store'])
     ->name('comments.store');
 
 // Dashboard padrão (para todos os users autenticados)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 // Rotas de perfil (Breeze)
 Route::middleware('auth')->group(function () {
@@ -45,5 +46,19 @@ Route::middleware('auth')->group(function () {
 
 
 });
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::get('movies/search', [MovieController::class, 'search'])->name('movies.search');
+});
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+// Admin (apenas admins)
+Route::get('/admin', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('admin.dashboard');
 
 require __DIR__ . '/auth.php';

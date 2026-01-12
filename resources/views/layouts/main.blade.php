@@ -39,12 +39,17 @@
                     <a href="/" class="px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
                         Início
                     </a>
-                    <a href="{{ route('movies.search') }}" class="flex items-center gap-2 px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
+                     @auth
+                        @if(auth()->user()->role === 'admin')
+                          <a href="{{ route('admin.movies.search') }}" class="flex items-center gap-2 px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
-                        Buscar
+                       Adicionar
                     </a>
+                        @endif
+                    @endauth
+                    
                     <a href="{{ url('/about') }}" class="px-6 py-2.5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 hover:scale-105">
                         Sobre
                     </a>
@@ -140,7 +145,7 @@
             <ul class="space-y-2">
                 <li><a href="/" class="hover:text-white transition-colors">Início</a></li>
                 <li><a href="{{ url('/movies') }}" class="hover:text-white transition-colors">Filmes</a></li>
-                <li><a href="{{ route('movies.search') }}" class="hover:text-white transition-colors">Buscar Filmes</a></li>
+                <li><a href="{{ route('admin.movies.search') }}" class="hover:text-white transition-colors">Buscar Filmes</a></li>
                 <li><a href="{{ url('/about') }}" class="hover:text-white transition-colors">Sobre</a></li>
                 <li><a href="{{ url('/saiba-mais') }}" class="hover:text-white transition-colors">Saiba Mais</a></li>
             </ul>

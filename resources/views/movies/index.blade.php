@@ -7,7 +7,7 @@
     use Illuminate\Support\Str;
 @endphp
 
-<div class="relative -mx-4 mb-12">
+<div class="relative -mx-4 mb-12 mt-7">
     <div class="relative h-96 md:h-[500px] bg-cover bg-center" style="background-image: url('https://image.tmdb.org/t/p/original{{ $movieDesc->backdrop_path }}');">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
         
@@ -37,7 +37,7 @@
         Filmes Populares
     </h2>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
+    <div class="cards">
         @foreach($movies as $movie)
             <div class="group cursor-pointer" onclick="window.location='{{ route('movies.show', $movie->id) }}'">
                 

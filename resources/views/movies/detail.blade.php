@@ -149,7 +149,7 @@
                     </div>
                 @endforeach
                 @auth
-    @if(auth()->user()->role === 'admin')
+    {{-- @if(auth()->user()->role === 'admin')
         <form 
             action="{{ route('movies.destroy', $movie->id) }}" 
             method="POST"
@@ -166,7 +166,7 @@
                 🗑 Apagar Filme
             </button>
         </form>
-    @endif
+    @endif --}}
 @endauth
             </div>
 
