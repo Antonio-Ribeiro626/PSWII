@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="max-w-7xl mx-auto px-4 pb-16">
+<div class="container">
     <h2 class="text-3xl font-bold text-black-900 dark:text-black mb-8">
         Filmes Populares
     </h2>

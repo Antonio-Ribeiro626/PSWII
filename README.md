@@ -66,3 +66,6 @@ password
 
 Email: teste@user.com
 Senha: password
+
+DAR:
+php artisan db:seed -> ATUALIZAR A BD COM OS DADOS DO SEEDER SEM APAGAR NADA

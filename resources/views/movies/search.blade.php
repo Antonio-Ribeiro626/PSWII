@@ -42,6 +42,7 @@
                 {{ count($movies) }} resultados para "<span class="font-bold">{{ request('query') }}</span>"
             </p>
         </div>
+    
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
             @foreach($movies as $movie)
@@ -125,7 +126,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
             <p class="text-gray-700 dark:text-gray-300">
-                Digite o nome de um filme para começar
+                Escreva o nome de um filme para começar
             </p>
         </div>
     @endif

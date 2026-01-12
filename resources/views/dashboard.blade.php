@@ -6,46 +6,52 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {{-- ADMIN --}}
             @if(auth()->user()->role === 'admin')
 
-                <h3 class="text-2xl font-bold mb-6">Filmes na base de dados</h3>
+                <h3 class="text-2xl font-bold mb-6 text-gray-800">Filmes na base de dados</h3>
 
                 @if($movies->isEmpty())
-                    <p>Nenhum filme encontrado.</p>
+                    <p class="text-gray-600">Nenhum filme encontrado.</p>
                 @else
-                    <div class="cards-2">
+                    <div class="grid grid-cols-4 gap-6">
                         @foreach($movies as $movie)
-                            <div class=" card">
-                                <img src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}"  />
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                                <img 
+                                    src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" 
+                                    alt="{{ $movie->title }}"
+                                    class="w-full h-auto object-cover"
+                                />
                                 <div class="p-4">
-                                    <h4 class="font-semibold">{{ $movie->title }}</h4>
+                                    <h4 class="font-semibold text-gray-800 mb-3">{{ $movie->title }}</h4>
+                                    
+                                    <div class="flex gap-2">
+                                        <a 
+                                            href="{{ route('movies.edit', $movie->id )}}" 
+                                            class="flex-1 bg-gray-800 text-white text-center py-2 px-3 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                                        >
+                                            Editar
+                                        </a>
+                                        
+                                        <form
+                                            action="{{ route('movies.destroy', $movie->id) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('Tens a certeza que queres apagar este filme?')"
+                                            class="flex-1"
+                                        >
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                type="submit"
+                                                class="w-full bg-red-600 text-white py-2 px-3 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                                            >
+                                                Apagar
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="flex gap-2 mt-3">
-
-                   
-                        <div class="elements-crud">
-                          <a  class="btn-db  " href="{{ route('movies.edit', $movie->id )}}" >
-                                editar
-                        </a>
-                                <form
-                                    action="{{ route('movies.destroy', $movie->id) }}"
-                                    method="POST"
-                                    onsubmit="return confirm('Tens a certeza que queres apagar este filme?')"
-                                >
-                                    @csrf
-                                    @method('DELETE')
-                                    <button
-                                        type="submit"
-                                        class="btn-db "
-                                    >
-                                         Apagar
-                                    </button>
-                                </form>
-                    </div>
-
                             </div>
                         @endforeach
                     </div>
@@ -54,15 +60,15 @@
             {{-- USER NORMAL --}}
             @else
 
-                <h3 class="text-2xl font-bold mb-6">Meus comentários</h3>
+                <h3 class="text-2xl font-bold mb-6 text-gray-800">Meus comentários</h3>
 
                 @if($comments->isEmpty())
-                    <p>Você ainda não comentou nenhum filme.</p>
+                    <p class="text-gray-600">Você ainda não comentou nenhum filme.</p>
                 @else
-                    <div class="space-y-4 gap-3">
+                    <div class="space-y-4">
                         @foreach($comments as $comment)
                             <div class="bg-white p-4 rounded shadow">
-                                <p class="font-semibold">
+                                <p class="font-semibold text-gray-800">
                                     🎬 {{ $comment->movie->title }}
                                 </p>
                                 <p class="text-gray-600 mt-2">
@@ -77,6 +83,4 @@
 
         </div>
     </div>
-
-
 </x-app-layout>
